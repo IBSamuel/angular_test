@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 
 export const adminguardsGuard: CanActivateFn = (route, state) => {
   let routes = inject(Router)
-  let user = localStorage['AdminDetails']
-  if(!user){
-    routes.navigate(['/signup'])
+  // let user = JSON.parse(localStorage['AdminDetails'])
+  if(!(localStorage['adminDetails'])){
+    routes.navigate(['/signin'])
   }
   return true;
 };

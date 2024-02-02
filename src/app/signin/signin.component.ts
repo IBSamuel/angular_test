@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface StudentInterface {
   email:String,
@@ -17,15 +18,23 @@ interface StudentInterface {
 export class SigninComponent {
   public email =""
   public password=""
+  constructor (public routes:Router){}
 
   public newInfoArray:StudentInterface[] = []
-  ngOnInit(){
-  }
+
+    ngOnInit() {
+      this.newInfoArray = JSON.parse(localStorage['adminDetails']);
+      // if (typeof localStorage !== 'undefined' && localStorage['adminDetails']) {
+      // }
+    }
+
   studentSignIn(){
-    this.newInfoArray = JSON.parse(localStorage['AdminDetails'])
+
     this.newInfoArray.find((student,index)=>student.email == this.email && student.password == this.password)
     if(this.newInfoArray){
       console.log("Signed In")
+      this.routes.navigate(['/admin/dashboard'])
+
     }
 
 

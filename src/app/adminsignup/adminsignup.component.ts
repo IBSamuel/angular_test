@@ -40,7 +40,7 @@ export class AdminsignupComponent {
   }
   this.adminDetails.push(adminObj)
   localStorage.setItem('adminDetails',(JSON.stringify(this.adminDetails)))
-  this.router.navigate(['admin/signin'])
+  this.router.navigate(['/signin'])
   this.message=`Submit Successful`
   setTimeout(()=>{
     this.message=``
