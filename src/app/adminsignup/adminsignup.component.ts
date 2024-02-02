@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface AdminInterface {
   firstName:String,
@@ -20,21 +21,32 @@ export class AdminsignupComponent {
  public last_name=""
  public email =""
  public password=""
+ public message =""
 
  public adminDetails:AdminInterface[] = []
+
+ constructor (public router:Router){}
  ngOnInit(){
   if(localStorage['AdminDetails']){
     this.adminDetails = JSON.parse(localStorage['AdminDetails'])
   }
 }
   signUpAdmin(){
-    let  studentObj = {
+    let  adminObj = {
       firstName: this.first_name,
       lastName: this.last_name,
       email:this.password,
       password:this.password
   }
+  this.adminDetails.push(adminObj)
   localStorage.setItem('adminDetails',(JSON.stringify(this.adminDetails)))
+  this.router.navigate(['admin/signin'])
+  this.message=`Submit Successful`
+  setTimeout(()=>{
+    this.message=``
+  },1000)
+
+
   }
 
 }

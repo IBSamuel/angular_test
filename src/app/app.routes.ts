@@ -5,8 +5,8 @@ import { AdminsignupComponent } from './adminsignup/adminsignup.component';
 import { adminguardsGuard } from './guard/adminguards.guard';
 
 export const routes: Routes = [
-  {path:'signup', component:StudentsignupComponent},
-  {path:'adminsignup', component:AdminsignupComponent},
+  {path:'student/signup', component:StudentsignupComponent},
+  {path:'admin/signup', component:AdminsignupComponent},
   {path:'admin', children:[
     {path:'', component:AdminsignupComponent},
     {path:'signin', component:SigninComponent}

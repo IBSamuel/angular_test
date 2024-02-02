@@ -22,6 +22,7 @@ export class StudentsignupComponent {
   public last_name=""
   public email =""
   public password=""
+  public message =""
 constructor(public routes:Router) {
 
 }
@@ -42,6 +43,10 @@ studentSignup(){
   }
   this.studentArray.push(studentObj)
   localStorage.setItem('studentDetails',(JSON.stringify(this.studentArray)))
+  this.message=`Submit Successful`
+  setTimeout(()=>{
+    this.message=``
+  },1000)
 
 }
 }
