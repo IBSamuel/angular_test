@@ -15,7 +15,37 @@
       <td>{{ item.firstName }}</td>
       <td>{{ item.lastName }}</td>
       <td>{{ item.email }}</td>
-      <td><button class="btn btn-warning me-2">edit</button> <button class="btn btn-danger" (click)="deleteStudent(i)">delete</button></td>
+      <td><!-- Button trigger modal -->
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" (click)="editInfo(i)" data-bs-target="#exampleModal">
+          edit
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <p>First Name</p>
+                <input type="text"  class="form-control" [(ngModel)]="editFirst">
+                <p>Last Name</p>
+                <input type="text" class="form-control" [(ngModel)]="editLast">
+                <p>Email</p>
+                <input type="email" class="form-control" [(ngModel)]="editEmail">
+                <p>Password</p>
+                <input type="password" class="form-control" [(ngModel)]="editPassword">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="editChanges()">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div> <button class="btn btn-danger" (click)="deleteStudent(i)">delete</button></td>
     </tr>
   </tbody>
 
